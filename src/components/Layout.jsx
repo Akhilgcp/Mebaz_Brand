@@ -20,14 +20,37 @@ const Layout = ({ children, totalSlides = 15 }) => {
 
     const goToHome = () => navigate('/');
 
+    // Ethnic Background Images (High Resolution)
+    const backgrounds = [
+        'https://images.unsplash.com/photo-1610051149637-6c09d511f074?q=80&w=1920&auto=format&fit=crop', // Blue/Gold Floral
+        'https://images.unsplash.com/photo-1620706857370-e1c97f06d6a4?q=80&w=1920&auto=format&fit=crop', // Red/Black Geometric
+        'https://images.unsplash.com/photo-1596796129481-42353f4a9b6c?q=80&w=1920&auto=format&fit=crop', // Red/Yellow Silk
+        'https://images.unsplash.com/photo-1605218427368-35b089b8a97e?q=80&w=1920&auto=format&fit=crop'  // Deep Purple/Pink (Added for variety)
+    ];
+
+    // Select background based on slide number
+    const bgIndex = (currentSlide - 1) % backgrounds.length;
+    const currentBg = backgrounds[bgIndex];
+
     return (
         <div className="relative w-full h-screen overflow-hidden bg-black text-white font-sans">
             {/* Background Layer */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-ethnic-pattern bg-cover bg-center opacity-60"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-royal-900/80 to-black/90"></div>
-                {/* Gold Overlay Texture */}
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
+                {/* Dynamic Ethnic Background Image */}
+                <motion.div
+                    key={currentBg}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.5 }}
+                    transition={{ duration: 1 }}
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${currentBg})` }}
+                />
+
+                {/* Stronger Gradient Overlay for Readability */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-royal-900/90 to-black/95 backdrop-blur-[2px]"></div>
+
+                {/* Gold Overlay Texture (Subtle) */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-overlay"></div>
             </div>
 
             {/* Main Content Area */}
