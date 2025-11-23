@@ -20,12 +20,12 @@ const Layout = ({ children, totalSlides = 15 }) => {
 
     const goToHome = () => navigate('/');
 
-    // Ethnic Background Images (High Resolution)
+    // Ethnic Background Images (Local Assets)
     const backgrounds = [
-        'https://images.unsplash.com/photo-1610051149637-6c09d511f074?q=80&w=1920&auto=format&fit=crop', // Blue/Gold Floral
-        'https://images.unsplash.com/photo-1620706857370-e1c97f06d6a4?q=80&w=1920&auto=format&fit=crop', // Red/Black Geometric
-        'https://images.unsplash.com/photo-1596796129481-42353f4a9b6c?q=80&w=1920&auto=format&fit=crop', // Red/Yellow Silk
-        'https://images.unsplash.com/photo-1605218427368-35b089b8a97e?q=80&w=1920&auto=format&fit=crop'  // Deep Purple/Pink (Added for variety)
+        '/backgrounds/bg1.png', // Maroon/Gold
+        '/backgrounds/bg2.png', // Blue/Silver
+        '/backgrounds/bg3.png', // Green/Gold
+        '/backgrounds/bg4.png'  // Purple/Gold
     ];
 
     // Select background based on slide number
